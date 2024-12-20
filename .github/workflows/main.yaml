@@ -16,10 +16,9 @@ jobs:
           distribution: "adopt"
 
       - name: Construir con Maven
-        run: mvn clean package -DskipTests
-      
-      - name: Visualizar directorios 
-        run: ls target/
+        run: |
+          mvn clean package -DskipTests
+          ls target/
 
       - name: Guardar paquete generado para el trabajo de despliegue
         uses: actions/upload-artifact@v4
