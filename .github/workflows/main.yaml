@@ -72,8 +72,7 @@ jobs:
         run: mvn clean package -DskipTests
       - name: Revisar la calidad con Sonarqube
         run: |
-          mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -
-          Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin
+          mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin
 
   deploy:
     needs: qa
