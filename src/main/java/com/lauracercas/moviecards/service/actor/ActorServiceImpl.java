@@ -3,8 +3,12 @@ package com.lauracercas.moviecards.service.actor;
 
 import com.lauracercas.moviecards.model.Actor;
 import com.lauracercas.moviecards.repositories.ActorJPA;
-import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,24 +19,31 @@ import java.util.List;
 @Service
 public class ActorServiceImpl implements ActorService {
 
-    private final ActorJPA actorJPA;
+    @Autowired
+    RestTemplate template;
 
-    public ActorServiceImpl(ActorJPA actorJPA) {
-        this.actorJPA = actorJPA;
-    }
+    String url = "https://moviecards-service-aguilar.azurewebsites.net/actors";
 
-    @Override
+     @Override
     public List<Actor> getAllActors() {
-        return actorJPA.findAll();
+        Actor[] actores = template.getForObject(url,
+        Actor[].class);
+        return Arrays.asList(actores);
     }
 
     @Override
     public Actor save(Actor actor) {
-        return actorJPA.save(actor);
+        if (actor.getId() != null && actor.getId() > 0) {
+            template.put(url, actor);
+            } else {
+            actor.setId(0);
+            template.postForObject(url, actor, String.class);
+            }
+            return actor;
     }
 
     @Override
     public Actor getActorById(Integer actorId) {
-        return actorJPA.getById(actorId);
+        return template.getForObject(url+"/"+actorId, Actor.class);        
     }
 }
