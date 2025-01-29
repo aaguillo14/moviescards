@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: 'Staging'
-      url: 'moviescards-service'
+      url: 'moviecards-aguilar-pre'
     steps:
       - name: Descargar artefacto del trabajo de build
         uses: actions/download-artifact@v4
