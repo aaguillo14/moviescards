@@ -90,7 +90,7 @@ jobs:
       - name: Desplegar en Azure Web App (Staging)
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'moviecards-aguilar-pre'
+          app-name: 'moviecards-pre-aguilar'
           slot-name: 'Production'
           package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_32945B7728A248639A68906F5F7FECBA }}
