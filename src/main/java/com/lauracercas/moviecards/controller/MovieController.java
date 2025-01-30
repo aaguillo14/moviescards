@@ -23,6 +23,14 @@ import java.util.List;
 @Controller
 public class MovieController {
 
+    private static final String ACTORS = "actors";
+    private static final String TITLE = "title";
+    private static final String MESSAGE = "message";
+    private static final String MOVIE = "movie";
+    private static final String MOVIES = "movies";
+    private static final String MOVIES_FORM = "movies/form";
+    private static final String MOVIES_LIST = "movies/list";
+
     private final MovieService movieService;
 
     public MovieController(MovieService movieService) {
@@ -31,44 +39,44 @@ public class MovieController {
 
     @GetMapping("movies")
     public String getMoviesList(Model model) {
-        model.addAttribute("movies", movieService.getAllMovies());
-        return "movies/list";
+        model.addAttribute(MOVIES, movieService.getAllMovies());
+        return MOVIES_LIST;
     }
 
     @GetMapping("movies/new")
     public String newMovie(Model model) {
-        model.addAttribute("movie", new Movie());
-        model.addAttribute("title", Messages.NEW_MOVIE_TITLE);
-        return "movies/form";
+        model.addAttribute(MOVIE, new Movie());
+        model.addAttribute(TITLE, Messages.NEW_MOVIE_TITLE);
+        return MOVIES_FORM;
     }
 
     @PostMapping("saveMovie")
     public String saveMovie(@ModelAttribute Movie movie, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "movies/form";
+            return MOVIES_FORM;
         }
         Movie movieSaved = movieService.save(movie);
         if (movieSaved.getId() != null) {
-            model.addAttribute("message", Messages.UPDATED_MOVIE_SUCCESS);
+            model.addAttribute(MESSAGE, Messages.UPDATED_MOVIE_SUCCESS);
         } else {
-            model.addAttribute("message", Messages.SAVED_MOVIE_SUCCESS);
+            model.addAttribute(MESSAGE, Messages.SAVED_MOVIE_SUCCESS);
         }
 
-        model.addAttribute("movie", movieSaved);
-        model.addAttribute("title", Messages.EDIT_MOVIE_TITLE);
-        return "movies/form";
+        model.addAttribute(MOVIE, movieSaved);
+        model.addAttribute(TITLE, Messages.EDIT_MOVIE_TITLE);
+        return MOVIES_FORM;
     }
 
     @GetMapping("editMovie/{movieId}")
     public String editMovie(@PathVariable Integer movieId, Model model) {
         Movie movie = movieService.getMovieById(movieId);
         List<Actor> actors = movie.getActors();
-        model.addAttribute("movie", movie);
-        model.addAttribute("actors", actors);
+        model.addAttribute(MOVIE, movie);
+        model.addAttribute(ACTORS, actors);
 
-        model.addAttribute("title", Messages.EDIT_MOVIE_TITLE);
+        model.addAttribute(TITLE, Messages.EDIT_MOVIE_TITLE);
 
-        return "movies/form";
+        return MOVIES_FORM;
     }
 
 
