@@ -49,7 +49,7 @@ class MovieControllerTest {
     }
 
     @Test
-    public void shouldGoListMovieAndGetAllMovies() {
+    void shouldGoListMovieAndGetAllMovies() {
         List<Movie> movies = new ArrayList<>();
 
         when(movieServiceMock.getAllMovies()).thenReturn(movies);
@@ -61,7 +61,7 @@ class MovieControllerTest {
 
 
     @Test
-    public void shouldInitializeMovie() {
+    void shouldInitializeMovie() {
         String viewName = controller.newMovie(model);
 
         assertEquals("movies/form", viewName);
@@ -71,7 +71,7 @@ class MovieControllerTest {
     }
 
     @Test
-    public void shouldSaveMovieWithNoErrors() {
+    void shouldSaveMovieWithNoErrors() {
         Movie movie = new Movie();
         BindingResult result = mock(BindingResult.class);
         when(result.hasErrors()).thenReturn(false);
@@ -88,7 +88,7 @@ class MovieControllerTest {
     }
 
     @Test
-    public void shouldUpdateMovieWithNoErrors() {
+    void shouldUpdateMovieWithNoErrors() {
         Movie movie = new Movie();
         movie.setId(1);
         BindingResult result = mock(BindingResult.class);
@@ -107,7 +107,7 @@ class MovieControllerTest {
 
 
     @Test
-    public void shouldTrySaveMovieWithErrors() {
+    void shouldTrySaveMovieWithErrors() {
         Movie movie = new Movie();
         BindingResult result = mock(BindingResult.class);
         when(result.hasErrors()).thenReturn(true);
@@ -121,7 +121,7 @@ class MovieControllerTest {
 
 
     @Test
-    public void shouldGoToEditMovie() {
+    void shouldGoToEditMovie() {
         Movie movie = new Movie();
         movie.setId(1);
         List<Actor> actors = List.of(new Actor());
