@@ -48,7 +48,7 @@ class ActorControllerTest {
 
 
     @Test
-    public void shouldGoListActorAndGetAllActors() {
+    void shouldGoListActorAndGetAllActors() {
         List<Actor> actors = new ArrayList<>();
 
         when(actorServiceMock.getAllActors()).thenReturn(actors);
@@ -59,7 +59,7 @@ class ActorControllerTest {
     }
 
     @Test
-    public void shouldInitializeActor() {
+    void shouldInitializeActor() {
         String viewName = controller.newActor(model);
 
         assertEquals("actors/form", viewName);
@@ -69,7 +69,7 @@ class ActorControllerTest {
     }
 
     @Test
-    public void shouldSaveActorWithNoErrors() {
+    void shouldSaveActorWithNoErrors() {
         Actor actor = new Actor();
         BindingResult result = mock(BindingResult.class);
         when(result.hasErrors()).thenReturn(false);
@@ -86,7 +86,7 @@ class ActorControllerTest {
     }
 
     @Test
-    public void shouldUpdateActorWithNoErrors() {
+    void shouldUpdateActorWithNoErrors() {
         Actor actor = new Actor();
         actor.setId(1);
         BindingResult result = mock(BindingResult.class);
@@ -104,7 +104,7 @@ class ActorControllerTest {
     }
 
     @Test
-    public void shouldTrySaveActorWithErrors() {
+    void shouldTrySaveActorWithErrors() {
         Actor actor = new Actor();
         BindingResult result = mock(BindingResult.class);
         when(result.hasErrors()).thenReturn(true);
@@ -117,7 +117,7 @@ class ActorControllerTest {
     }
 
     @Test
-    public void shouldGoToEditActor() {
+    void shouldGoToEditActor() {
         Actor actor = new Actor();
         actor.setId(1);
         List<Movie> movies = List.of(new Movie());

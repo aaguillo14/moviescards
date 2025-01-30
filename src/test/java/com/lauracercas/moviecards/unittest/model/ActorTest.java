@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.lauracercas.moviecards.model.Actor;
 import com.lauracercas.moviecards.model.Movie;
 
-public class ActorTest {
+class ActorTest {
 
     Actor actor = new Actor();
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.lauracercas.moviecards.model.Card;
 
 
-public class CardTest {
+class CardTest {
 
     Card card = new Card();
 

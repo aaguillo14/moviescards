@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * Fecha: 04/06/2024
  */
 @DataJpaTest
-public class MovieJPAIT {
+class MovieJPAIT {
 
     @Autowired
     private MovieJPA movieJPA;
 
     @Test
-    public void testSaveMovie() {
+    void testSaveMovie() {
         Movie movie = new Movie();
         movie.setTitle("Movie");
         movie.setCountry("country");
@@ -43,7 +43,7 @@ public class MovieJPAIT {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         Movie movie = new Movie();
         movie.setTitle("movie2");
         Movie savedMovie = movieJPA.save(movie);

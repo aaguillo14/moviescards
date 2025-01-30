@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * Fecha: 04/06/2024
  */
 @DataJpaTest
-public class ActorJPAIT {
+class ActorJPAIT {
 
     @Autowired
     private ActorJPA actorJPA;
 
     @Test
-    public void testSaveActor() {
+    void testSaveActor() {
         Actor actor = new Actor();
         actor.setName("actor");
         actor.setBirthDate(new Date());        
@@ -41,7 +41,7 @@ public class ActorJPAIT {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         Actor actor = new Actor();
         actor.setName("actor");
         actor.setBirthDate(new Date());

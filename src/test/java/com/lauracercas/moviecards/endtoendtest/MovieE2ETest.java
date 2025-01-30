@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Proyecto: TFM Integración Continua con GitHub Actions
  * Fecha: 04/06/2024
  */
-public class MovieE2ETest {
+class MovieE2ETest {
     private WebDriver driver;
 
     @BeforeEach
@@ -41,7 +41,7 @@ public class MovieE2ETest {
 
 
     @Test
-    public void testPageLoadAndForm() {
+    void testPageLoadAndForm() {
         driver.get("http://localhost:8089/movies/new");
         assertEquals("FichasPeliculasApp | Aplicación de gestión de fichas de películas", driver.getTitle());
 
@@ -55,14 +55,14 @@ public class MovieE2ETest {
     }
 
     @Test
-    public void testNewMovieTitle() {
+    void testNewMovieTitle() {
         driver.get("http://localhost:8089/movies/new");
         WebElement title = driver.findElement(By.className("title"));
         assertEquals(NEW_MOVIE_TITLE, title.getText());
     }
 
     @Test
-    public void testListMovies() {
+    void testListMovies() {
         driver.get("http://localhost:8089/movies");
         WebElement title = driver.findElement(By.className("card-header"));
         assertEquals("Listado Peliculas", title.getText());
